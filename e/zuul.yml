@@ -1,0 +1,11 @@
+server:
+  port: 6666
+spring:
+  application:
+    name: zuul
+    
+zuul:
+  routes:
+   users:
+      path: /**
+      url: http://www.baidu.com:80

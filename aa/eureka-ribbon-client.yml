@@ -1,0 +1,55 @@
+server:
+  port: 8764
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      
+#解决首次访问可能失败问题，1秒
+hystrix:
+  command:
+    default:
+      execution:
+        timeout: 
+          enabled: false #禁用超时
+
+#springboot2.0. 的配置项为：
+#actuator端口
+management:
+  server:
+    port: 9001
+  endpoints:
+    web:
+   #   base-path: / #修改访问路径  2.0之前默认是/   2.0默认是 /actuator  可以通过这个属性值修改
+      exposure:
+        include: '*'  #开放所有页面节点  默认只开启了health、info两个节点
+
+spring:
+
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      probability: 1.0 # 将采样比例设置为 1.0，也就是全部都需要。默认是 0.1
+  zipkin:
+    base-url: http://localhost:9411/ # 指定了 Zipkin 服务器的地址
+    
+  cloud:
+    stream:
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.52.130
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
+                
+    bus:
+      trace:
+        enabled: true
+      enabled: true

@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: xujin_route
+        uri: http://www.baidu.com:80/
+        predicates:
+        - Path=/baidudu

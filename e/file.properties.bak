@@ -1,6 +1,6 @@
 #eureka.client.serviceUrl.defaultZone=http://localhost:8000/eureka/
 
-test_value=123456777
+test_value=123456
 management.security.enabled=false
  
 management.endpoints.web.base-path=/monitor

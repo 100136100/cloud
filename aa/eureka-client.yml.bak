@@ -1,0 +1,36 @@
+server:
+  port: 8762
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
+spring:
+
+
+    
+  cloud:
+    stream:
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.52.130
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
+                
+    bus:
+      trace:
+        enabled: true
+      enabled: true
